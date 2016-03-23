@@ -1,0 +1,25 @@
+from django.db import models
+
+class Bike(models.Model):
+	bike_model = models.CharField(max_length=200)
+	depl_date = models.DateTimeField('Date Deployed')
+	position_x = models.FloatField()
+	position_y = models.FloatField()
+
+class Customer(models.Model):
+	pan_id = models.IntegerField(primary_key=True)
+	name = models.CharField(max_length = 100)
+	mem_join = models.DateTimeField('Date Joined')
+
+class Transaction(models.Model):
+	bike = models.ForeignKey(Bike)
+	cust = models.ForeignKey(Customer)
+	date = models.DateTimeField()
+	start_time = models.DateTimeField()
+	end_time = models.DateTimeField()
+	rate = models.Integer(default=10)
+	
+class Station(models.Model):
+	coordinates_x = models.FloatField()
+	coordinates_y = models.FloatField()
+	Incharge = models.CharField(max_length=100)

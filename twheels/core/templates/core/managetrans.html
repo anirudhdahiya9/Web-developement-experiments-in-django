@@ -1,0 +1,22 @@
+<h1>Manage Ongoing Transactions<br/></h1>
+<form action="{% url 'core:endtrip'%}" method="post">
+<table>
+<tr>
+	<td>id</td>
+	<td>start_time</td>
+	<td>bike</td>
+	<td>cust</td>
+	<td>rate</td>
+</tr>
+{% for transaction in active_transactions %}
+<tr>
+	<td>{{transaction.id}}</td>
+	<td>{{transaction.start_time}}</td>
+	<td>{{transaction.bike}}</td>
+	<td>{{transaction.cust}}</td>
+	<td>{{transaction.rate}}</td>
+	<td><input type="radio" name</td>
+</tr>
+{% endfor %}
+</table>
+<input type="submit" value="End Trip" /></form>

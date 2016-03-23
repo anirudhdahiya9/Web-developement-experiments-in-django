@@ -1,0 +1,6 @@
+<form method="post" action="{% url 'register' %}">
+{% csrf_token %}
+{{form.as_p}}
+{{profileform.as_p}}
+<input type="Submit" value="Register"/>
+</form>

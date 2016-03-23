@@ -1,0 +1,25 @@
+<h1>Welcome to the Wheels Website!</h1>
+<p>
+{% if latest_transaction_list %}
+<table>
+	<tr>
+		<td>ID</td>
+		<td>Start Time</td>
+		<td>End Time</td>
+		<td>Bike</td>
+		<td>Rate</td>
+		<td>Customer</td>
+	</tr>
+	{% for transaction in latest_transaction_list %}
+	<tr>
+		<td>{{transaction.id}}</td>
+		<td>{{transaction.start_time}}</td>
+		<td>{{transaction.end_time}}</td>
+		<td>{{transaction.bike}}</td>
+		<td>{{transaction.rate}}</td>
+		<td>{{transaction.cust.pan_id}}</td>
+	</tr>
+	{% endfor %}
+{% else %}
+	<p>No transactions to show</p>
+{% endif %}

@@ -1,0 +1,10 @@
+<ul>
+{% for bike in bikes %}
+<li>{{bike.bikemodel}} {{bike.size}}</li>
+{% endfor %}
+</ul>
+<form action="{% url 'regbike' %}" method="post">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" value="Register" />
+</form>

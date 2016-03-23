@@ -1,0 +1,25 @@
+<h1>Make a Booking here!</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'core:booki' %}" method="post">
+	{% csrf_token %}
+	Select Bike</br>
+	<select>
+	{% for bike in available_bikes %}
+	    <option name="choice_bike" id="choice{{ forloop.counter }}" value="{{ bike.id }}" />
+	    <label for="choice{{ forloop.counter }}">{{ bike.bike_model }}</label></option>
+		{% endfor %}
+	</select><br/>
+		Select Station</br>
+	{% for station in stations %}
+	    <input type="radio" name="choice_station" id="choice{{ forloop.counter }}" value="{{ station.id }}" />
+	        <label for="choice{{ forloop.counter }}">{{ station.name }}</label><br />
+		{% endfor %}
+		Select Customer</br>
+	{% for customer in customers %}
+	    <input type="radio" name="choice_customer" id="choice{{ forloop.counter }}" value="{{ customer.pan_id }}" />
+	        <label for="choice{{ forloop.counter }}">{{ customer }}</label><br />
+		{% endfor %}
+		<input type="submit" value="Book" />
+</form>
